@@ -1,0 +1,122 @@
+Hola este es un corpus que seirve de TEST para ver que tal funciona el tokenaizer con numeros 1 2 3 4 5 6 7 8 9 0 120 2134 342 4234 34 palabras perro gato raton auto
+c++ gpt-4 el texto de prueba es Prueba de tokenizacion y decodificacion. vamos a colocar más palabras como pizza hamburguesa Francia Peru chile Italia etc elementos
+le voy a perdir un corpus a chat gpt y gemini
+
+Gemini:
+================================================================================
+CORPUS DE PRUEBA PARA MODELOS TRANSFORMER Y TOKENIZADORES (v1.0)
+================================================================================
+
+--- SECCIÓN 1: INTRODUCCIÓN A LA INTELIGENCIA ARTIFICIAL ---
+La Inteligencia Artificial (IA) ha transformado radicalmente la tecnología moderna. En el corazón de los modelos de lenguaje actuales, como GPT-4, Claude o Llama, se encuentra la arquitectura conocida como "Transformer", introducida por Vaswani et al. en el famoso artículo "Attention Is All You Need" en el año 2017. 
+
+A diferencia de las redes neuronales recurrentes (RNN) y las redes de memoria a corto y largo plazo (LSTM), los Transformers no procesan el texto de manera secuencial, palabra por palabra. En su lugar, utilizan un mecanismo llamado "Atención Completa" o "Self-Attention" que les permite procesar todas las palabras de una secuencia simultáneamente. Esto significa que el modelo puede calcular las relaciones entre palabras sin importar qué tan alejadas estén en el texto. Esto resolvió el problema del gradiente desvanecido y permitió un entrenamiento masivamente paralelo en unidades de procesamiento gráfico (GPU).
+
+--- SECCIÓN 2: ASPECTOS TÉCNICOS Y MATEMÁTICOS ---
+El procesamiento de datos en un Transformer sigue una secuencia lógica de pasos matemáticos estricta. Primero, los tokens de entrada se convierten en vectores densos a través de una matriz de embedding:
+
+E = embedding(X)
+
+Luego, se añade la codificación posicional (Positional Encoding) para que el modelo conserve la noción del orden de las palabras, dado que la atención por sí sola es invariante al orden. La fórmula estándar utiliza funciones trigonométricas de seno y coseno:
+
+PE(pos, 2i) = sin(pos / 10000^(2i/d_model))
+PE(pos, 2i+1) = cos(pos / 10000^(2i/d_model))
+
+Posteriormente, las matrices de Query (Q), Key (K) y Value (V) se calculan multiplicando los embeddings por matrices de pesos entrenables (W_Q, W_K, W_V). La atención de producto escalar escalado se define como:
+
+Attention(Q, K, V) = softmax((Q * K^T) / sqrt(d_k)) * V
+
+Este proceso se repite múltiples veces en paralelo en lo que llamamos "Multi-Head Attention" (Atención de Múltiples Cabezas), permitiendo al modelo enfocarse en diferentes partes de la oración al mismo tiempo.
+
+--- SECCIÓN 3: DIÁLOGOS Y LENGUAJE NATURAL ---
+En el mundo real, los modelos deben entender cómo hablan los humanos. Veamos un ejemplo de interacción simulada:
+
+Usuario: ¿Hola! Podrías explicarme la diferencia entre un token y una palabra?
+Asistente: ¡Por supuesto! Una palabra es una unidad lingüística completa (ej. "computadora"). Un token, en cambio, es la unidad mínima que procesa el modelo de IA. El tokenizador puede dividir una palabra rara o larga en varios sub-tokens (ej. "computa", "dora"). Esto ayuda a que el modelo reduzca el tamaño de su vocabulario y entienda palabras que nunca antes ha visto.
+Usuario: Entiendo perfectamente... ¿Y qué pasa con los emojis como 🤔 o 🚀?
+Asistente: Los emojis también se convierten en tokens únicos. Por ejemplo, "🚀" podría ser el token número 8492 en el vocabulario.
+
+--- SECCIÓN 4: CÓDIGO DE PROGRAMACIÓN Y SÍNTAXIS ---
+Es vital probar si el tokenizador maneja correctamente sangrías, pestañas, llaves, corchetes y palabras clave de programación. A continuación, un fragmento de código en C++ que podría ser similar a tu implementación actual:
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+
+namespace Transformer {
+    class Tokenizer {
+    private:
+        std::map<std::string, int> vocab;
+    public:
+        Tokenizer() {
+            vocab["[PAD]"] = 0;
+            vocab["[UNK]"] = 1;
+            vocab["el"] = 2;
+            vocab["la"] = 3;
+        }
+
+        std::vector<int> encode(const std::string& text) {
+            std::vector<int> tokens;
+            std::cout << "Tokenizando el texto: " << text << std::endl;
+            // TODO: Implementar la lógica del algoritmo BPE aquí
+            if (text.empty()) {
+                tokens.push_back(vocab["[PAD]"]);
+            }
+            return tokens;
+        }
+    };
+}
+
+int main() {
+    Transformer::Tokenizer tok;
+    std::string sample = "El modelo Transformer funciona de maravilla.";
+    std::vector<int> ids = tok.encode(sample);
+    return 0;
+}
+
+--- SECCIÓN 5: CASOS EXTREMOS, SÍMBOLOS Y NÚMEROS ---
+Para estresar el sistema, el tokenizador debe enfrentarse a formatos numéricos complejos, direcciones IP, correos electrónicos y caracteres especiales de codificación UTF-8:
+
+- Números y fechas: 123456789, 0.0000543, -999, 12/07/2026, 15:45:23.
+- Matemáticas y lógica: (x + y) * z >= 50 || a != b && true == false.
+- Direcciones y redes: https://www.deeplearning.ai/path?user=123&lang=es#setup
+- Correos electrónicos: transformer_test.user@university-domain.edu.pe
+- Caracteres internacionales: Niño, café, München, Cyrillic (Привет), Chinese (你好), Japanese (こんにちは).
+- Líneas vacías y espacios extraños:       Muchos       espacios      entre       palabras.
+- Símbolos especiales: ~ ` ! @ # $ % ^ & * ( ) _ + - = { } [ ] | \ : ; " ' < > , . ? / © ® ™
+
+--- FINAL DEL CORPUS ---
+Este es el cierre del archivo de prueba. Si tu tokenizador puede procesar todo este archivo de texto sin romperse, generar una lista válida de IDs de enteros (integers) y luego decodificarlos (`decode`) recuperando exactamente este mismo texto sin perder caracteres extraños, ¡tu Tokenizer está listo para la acción!
+================================================================================
+
+
+ChatGPT:
+
+La inteligencia artificial ha cambiado profundamente la forma en que las personas interactúan con la tecnología. Hace algunos años, muchas tareas que parecían imposibles ahora pueden realizarse con la ayuda de modelos de aprendizaje automático y redes neuronales profundas. Estos avances han permitido desarrollar asistentes virtuales, sistemas de traducción automática, motores de búsqueda más precisos y herramientas capaces de generar texto, imágenes y código.
+
+Un estudiante de ciencias de la computación decidió implementar un modelo Transformer completamente desde cero utilizando el lenguaje de programación C++. El objetivo principal no era construir el modelo más rápido del mundo, sino comprender cada una de las etapas involucradas en el procesamiento del lenguaje natural. Para ello comenzó implementando un tokenizer, luego un sistema de vocabulario, posteriormente las capas de embeddings y finalmente el mecanismo de atención.
+
+El tokenizer recibe un archivo de texto como entrada. Después lee cada carácter del documento, identifica las palabras, elimina algunos signos de puntuación, convierte las letras mayúsculas en minúsculas cuando es necesario y asigna un identificador numérico único a cada palabra distinta. Si una palabra aparece nuevamente en el texto, el tokenizer reutiliza el mismo identificador que había generado anteriormente.
+
+El vocabulario contiene palabras frecuentes como el, la, los, las, de, del, y, en, por, para, con, sin, sobre, entre, durante, antes, después, mientras, aunque, porque y también términos técnicos como transformer, atención, embedding, token, vocabulario, inferencia, entrenamiento, parámetro, gradiente, optimización y arquitectura.
+
+Las computadoras modernas ejecutan millones de instrucciones por segundo. Un procesador contiene varios núcleos capaces de trabajar en paralelo, mientras que la memoria principal almacena temporalmente los datos necesarios para ejecutar los programas. Los discos de estado sólido permiten acceder a la información mucho más rápido que los discos duros tradicionales.
+
+El desarrollo de software requiere planificación, organización y trabajo en equipo. Los programadores escriben código, realizan pruebas unitarias, documentan funciones, corrigen errores y optimizan algoritmos para mejorar el rendimiento. Un pequeño cambio en una función puede producir resultados completamente diferentes si no se realizan pruebas adecuadas.
+
+En una universidad, los estudiantes asisten a clases de matemáticas, programación, algoritmos, estructuras de datos, bases de datos, inteligencia artificial, sistemas operativos, redes de computadoras e ingeniería de software. Cada curso desarrolla habilidades distintas que posteriormente serán útiles para resolver problemas reales.
+
+Durante un proyecto de investigación, un grupo de estudiantes recopiló información proveniente de libros, artículos científicos, tesis, repositorios públicos y documentación oficial. Después limpiaron los datos, eliminaron registros duplicados, normalizaron el formato del texto y construyeron un corpus suficientemente grande para entrenar un modelo experimental.
+
+En una biblioteca es posible encontrar novelas, enciclopedias, diccionarios, revistas, periódicos y documentos históricos. Algunas obras fueron escritas hace cientos de años, mientras que otras fueron publicadas recientemente. La lectura constante ayuda a ampliar el vocabulario y mejora la comprensión lectora.
+
+El clima cambia constantemente. Un día puede ser soleado, al siguiente lluvioso y luego completamente nublado. Las temperaturas también varían entre la mañana, la tarde y la noche. En algunas ciudades es común registrar temperaturas de 5, 12, 18, 25 o incluso 35 grados durante diferentes épocas del año.
+
+Muchas personas practican deportes como fútbol, voleibol, natación, ciclismo, atletismo y ajedrez. Otras prefieren actividades artísticas como la pintura, la fotografía, la música o la escritura. Mantener un equilibrio entre el estudio, el trabajo y el descanso contribuye a mejorar la calidad de vida.
+
+En el año 2025 una empresa procesó más de 250000 documentos digitales y almacenó aproximadamente 35000000 palabras diferentes. De ese conjunto, alrededor del 20% correspondía a términos técnicos, el 15% a nombres propios y el resto a vocabulario general.
+
+Algunas palabras aparecen muchas veces en este corpus. Por ejemplo, computadora, programa, algoritmo, modelo, datos, texto, palabra, lenguaje, inteligencia, artificial, estudiante, universidad, investigación, proyecto, programación, algoritmo, algoritmo, algoritmo, datos, datos, datos, texto, texto, texto, modelo, modelo, modelo.
+
+Finalmente, este corpus fue creado únicamente con fines de prueba. Su propósito es verificar que el tokenizer sea capaz de reconocer correctamente palabras repetidas, números como 3, 15, 128, 1024 y 5000000, signos de puntuación como puntos, comas, dos puntos, punto y coma, signos de interrogación, signos de exclamación, paréntesis, comillas y guiones. Si la implementación funciona correctamente, el vocabulario contendrá cada palabra una sola vez y cada token tendrá un identificador consistente a lo largo de todo el documento.
